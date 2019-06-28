@@ -1,0 +1,45 @@
+{
+  "pages": [
+    "pages/artical/list",
+    "pages/artical/detail",
+    "pages/edit/index",
+    "pages/personal/personal"
+  ],
+  "window": {
+    "backgroundColor": "cd58ff",
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "cd58ff",
+    "navigationBarTitleText": "云博客",
+    "navigationBarTextStyle": "white",
+    "navigationStyle": "custom"
+  },
+  "tabBar": {
+    "backgroundColor": "#F8F8FA",
+    "borderStyle": "white",
+    "color": "#bfbfbf",
+    "selectedColor": "#cd58ff",
+    "list": [
+      {
+        "pagePath": "pages/artical/list",
+        "iconPath": "images/index_less.png",
+        "selectedIconPath": "images/index_full.png",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/personal/personal",
+        "iconPath": "images/mine_less.png",
+        "selectedIconPath": "images/mine_full.png",
+        "text": "我的"
+      }
+    ]
+  },
+  "networkTimeout": {
+    "request": 10000,
+    "downloadFile": 10000
+  },
+  "usingComponents": {
+    "loading": "./components/loading/loading",
+    "navigation-bar": "./components/navigation-bar/index"
+  },
+  "sitemapLocation": "sitemap.json"
+}

@@ -1,0 +1,35 @@
+<!--index.wxml-->
+
+<navigation-bar
+  title="{{navName}}"
+  show-home="true">
+  <view slot="action"></view>
+  <view class="container">
+  <view class='content'>
+    <view class='titleBox'>
+      <view class="subnav-banner">
+        <text style="white-space:pre;"> </text>
+        <text class="line"></text>
+        <text style="white-space:pre;"> </text>
+        <text class="txt">文章标题</text>
+        <text style="white-space:pre;"> </text>
+        <text class="line"></text>
+      </view>
+      <view class='title'>
+        <input type='text' placeholder='请输入文章标题' bindinput="titleInput"></input>
+      </view>
+    </view>
+    <view class='mainText'>
+      <view class="subnav-banner">
+        <text style="white-space:pre;"> </text>
+        <text class="line"></text>
+        <text style="white-space:pre;"> </text>
+        <text class="txt">文章内容</text>
+        <text style="white-space:pre;"> </text>
+        <text class="line"></text>
+      </view>
+      <x-richtext bind:getDataList="saveData"></x-richtext>
+    </view>
+  </view>
+</view>
+</navigation-bar>

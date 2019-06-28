@@ -1,0 +1,144 @@
+// out: detail.wxss
+page {
+  background: #fff;
+}
+.page-artical {
+  .loading-box {
+    padding-top: 120rpx;
+  }
+
+  // 文章主体(内容 + 标题)
+  .artical-content {
+    font-weight: 400;
+    padding: 20rpx 40rpx;
+
+    .artical-title {
+      font-weight: 500;
+      font-size: 38rpx;
+    }
+  }
+
+  // 回复标题
+  .reply-title {
+    background: #eee;
+    padding: 20rpx;
+  }
+
+  // 回复内容
+  .reply-content {
+    font-weight: 400;
+
+    &.detail-author {
+      margin-top: 20rpx;
+      opacity: 0.85;
+      .reply-item {
+        border: none;
+        padding: 20rpx 0 20rpx 110rpx;
+      }
+      .avatar {
+        left: 0;
+      }
+    }
+
+    .reply-item {
+      position: relative;
+      width: 100%;
+      padding: 20rpx 30rpx 20rpx 130rpx;
+      &:last-child {
+        .reply-time.end {
+          border-bottom: 0;
+        }
+      }
+    }
+
+    .reply-time {
+      padding-top: 10rpx;
+      font-weight: 700;
+      color: #999;
+      font-size: 28rpx;
+      .field {
+        color: #999;
+      }
+      &.end {
+        padding-bottom: 20rpx;
+        border-bottom: 1px solid #eee;
+      }
+    }
+  }
+
+  // 回复内容列表项(每条回复)
+  .reply-item {
+    .avatar {
+      display: block;
+      width: 80rpx;
+      height: 80rpx;
+      position: absolute;
+      left: 20rpx;
+      top: 30rpx;
+      border-radius: 8rpx;
+      background: #eee;
+    }
+
+    .reply-inner {
+      .loginname {
+        font-weight: 700;
+        color: #535A79;
+      }
+    }
+  }
+
+
+  // 没有更多数据
+  .no-data {
+    height: 260rpx;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20rpx;
+    color: #666;
+    font-size: 28rpx;
+  }
+
+
+  // 收藏
+  .assit-bar {
+    padding: 30rpx 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .collection-box {
+      height: 160rpx;
+      width: 160rpx;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      transition: all .2s;
+      .btn-collection {
+        height: 100rpx;
+        width: 100rpx;
+        background: #eee;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50%;
+        .icon-cnode {
+          // color: #026e00;
+          font-weight: 700;
+          font-size: 52rpx;
+        }
+        &.active {
+          color: #eee;
+          background: #026e00;
+        }
+      }
+      .desc-text {
+        display: block;
+        height: 60rpx;
+        line-height: 60rpx;
+        font-size: 26rpx;
+      }
+    }
+  }
+}

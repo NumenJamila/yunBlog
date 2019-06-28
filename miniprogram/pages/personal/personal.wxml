@@ -1,0 +1,48 @@
+<navigation-bar id="customNavigationBar" title="我的">
+  <view class="page-personal ">
+    <view class="container">
+  <view class="userinfo">
+    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo">获取头像昵称</button>
+    <block wx:else>
+      <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
+      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+    </block>
+  </view>
+</view>
+
+
+    <view class="module-lists">
+      <view class="module main-icon more-icon" hover-class="hover">
+        <view class="list-icon share"><text class="icon-cnode cnode-fenxiangfangshi"></text></view>
+        <view class="main-text">分享给好友</view>
+        <view class="more-icon"><text class="icon-cnode cnode-you"></text></view>
+        <button open-type="share" type="default" size="default" class="btn-feedback"></button>
+      </view>
+      <view class="module main-icon more-icon" hover-class="hover">
+        <view class="list-icon message"><text class="icon-cnode cnode-kefu"></text></view>
+        <view class="main-text">和你有话说</view>
+        <view class="more-icon"><text class="icon-cnode cnode-you"></text></view>
+        <button open-type="contact" type="default" size="default" class="btn-feedback"></button>
+      </view>
+    </view>
+
+    <view class="module-lists">
+      <view class="module main-icon more-icon" hover-class="hover" data-type="reLaunch" bindtap="handleOperate">
+        <view class="list-icon relaunch"><text class="icon-cnode cnode-bianji"></text></view>
+        <view class="main-text">检查更新</view>
+      </view>
+      <view class="module main-icon more-icon" hover-class="hover"  data-type="cache" bindtap="handleOperate">
+        <view class="list-icon setting"><text class="icon-cnode cnode-bianji"></text></view>
+        <view class="main-text">清除缓存并重新启动</view>
+        <view class="more-icon"><text class="icon-cnode cnode-you"></text></view>
+      </view>
+      <view class="module main-icon more-icon" hover-class="hover" data-target="about"  bindtap="navigatePage">
+        <view class="list-icon version"><text class="icon-cnode cnode-jinggao"></text></view>
+        <view class="main-text">关于</view>
+        <view class="sub-text version">版本号 {{version}}</view>
+        <view class="more-icon"><text class="icon-cnode cnode-you"></text></view>
+      </view>
+    </view>
+
+  </view>
+</navigation-bar>

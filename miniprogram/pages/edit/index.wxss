@@ -1,0 +1,59 @@
+/**index.wxss**/
+
+.content {
+  /* width: 720rpx;
+  margin: 10rpx auto; */
+}
+
+.titleBox {
+  background-color: #fff;
+  padding: 20rpx 30rpx;
+}
+
+.titleBox .title {
+  border: 2px solid red;
+  border-radius: 40px;
+  margin: 0 40rpx 8rpx;
+  padding: 0 32rpx;
+  height: 2.2rem;
+  line-height: 2.2rem;
+}
+
+.content .title input {
+  width: 100%;
+  font-size: 16px;
+  height: 100%;
+  text-align: center;
+}
+
+.mainText {
+  margin: 30rpx;
+  background-color: #fff;
+  padding: 20rpx 10rpx;
+  min-height: 600rpx;
+}
+
+.mainText .textTitle {
+  font-size: 28rpx;
+}
+
+.subnav-banner {
+  height: 80rpx;
+  text-align: center;
+  width: 100%;
+  /* margin: 20px auto; */
+}
+
+.subnav-banner .line {
+  display: inline-block;
+  width: 150rpx;
+  border-top: 2rpx solid #ccc;
+}
+
+.subnav-banner .txt {
+  color: #686868;
+  vertical-align: -7px;
+  font-size: 20px;
+  padding:0 28rpx;
+
+}

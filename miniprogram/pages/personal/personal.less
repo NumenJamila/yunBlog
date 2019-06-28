@@ -1,0 +1,296 @@
+// out: personal.wxss
+.page-personal {
+  height: 100%;
+
+  // @borderColor: #CBCACB;
+  @borderColor: #F0F0F0;
+
+  .user-info {
+    height: 300rpx;
+    width: 750rpx;
+    background: #fff;
+    // padding: 0 10rpx 84rpx;
+    &::after {
+      content: '';
+      display: block;
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: 2rpx;
+      transform: scale(1, 0.5) translateY(50%);
+      background: @borderColor;
+    }
+  }
+
+  // 用户信息展示
+  .user-info-panel {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    position: relative;
+    .avatar-box {
+      height: 128rpx;
+      width: 128rpx;
+      border-radius: 10rpx;
+      margin: 0 36rpx;
+      overflow: hidden;
+
+      image {
+        display: block;
+        height: 100%;
+        width: 100%;
+      }
+    }
+
+    .info-box {
+      height: 128rpx;
+
+      .name,
+      .id-number {
+        display: flex;
+        align-items: center;
+      }
+
+      .name {
+        height: 74rpx;
+        font-size: 48rpx;
+        font-weight: 700;
+        color: #000;
+      }
+
+      .id-number {
+        display: inline-block;
+        height: 54rpx;
+        font-size: 34rpx;
+        color: #4E4E4E;
+        width: 220px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        color: #999;
+        font-weight: 400;
+      }
+    }
+  }
+
+  // 登录
+  .login-panel {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .btn-login {
+      font-weight: 500;
+      color: #666;
+      font-size: 32rpx;
+      padding: 10rpx 20rpx;
+      border: 1px solid #CCC;
+      border-radius: 8rpx;
+    }
+
+    .login-desc {
+      font-size: 32rpx;
+      font-weight: 500;
+      color: #999;
+    }
+  }
+
+
+  // 列表项
+  .module-lists {
+    position: relative;
+    margin-top: 20rpx;
+    box-sizing: border-box;
+
+    // border-top: 2rpx solid @borderColor;
+    // border-bottom: 2rpx solid @borderColor;
+    &::before,
+    &::after {
+      content: '';
+      display: block;
+      position: absolute;
+      left: 0;
+      width: 100%;
+      height: 2rpx;
+      background: @borderColor;
+    }
+
+    &::before {
+      top: 0;
+      transform: scale(1, 0.5) translateY(-50%);
+    }
+
+    &::after {
+      bottom: 0;
+      transform: scale(1, 0.5) translateY(50%);
+    }
+
+    .module {
+      position: relative;
+      height: 110rpx;
+      padding: 0 40rpx;
+      box-sizing: border-box;
+      background: #FFF;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 34rpx;
+      transition: background .1s;
+
+      &.hover {
+        background: #DDD;
+      }
+
+      &::after {
+        content: '';
+        display: block;
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        left: 30rpx;
+        height: 2rpx;
+        transform: scale(1, 0.5) translateY(50%);
+        background: @borderColor;
+      }
+
+      &:last-child {
+        &::after {
+          display: none;
+        }
+      }
+
+      &.main-icon {
+        padding-left: 100rpx;
+
+        &::after {
+          left: 110rpx;
+        }
+      }
+
+      &.more-icon {
+        padding-right: 90rpx;
+      }
+
+      .list-icon,
+      .more-icon {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .list-icon {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 110rpx;
+        height: 110rpx;
+
+        .icon-cnode {
+          font-size: 40rpx;
+          font-weight: 700;
+        }
+      }
+
+      .more-icon {
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: 90rpx;
+        height: 110rpx;
+        // color: #eee;
+
+        .icon-cnode {
+          font-size: 30rpx;
+          color: #bfbfbf;
+        }
+      }
+
+      .main-text {
+        font-weight: 400;
+      }
+
+      .sub-text {
+        font-weight: 400;
+        color: #999;
+        &.version {
+          font-size: 26rpx;
+          position: relative;
+          right: -10rpx;
+          font-weight: 700;
+        }
+      }
+    }
+  }
+
+
+  .module-lists {
+    color: #333;
+    // .fav {
+    //   color: #F68C31;
+    // }
+
+    // .lib {
+    //   color: #216DEA;
+    // }
+
+    // .setting {
+    //   color: #026e00;
+    // }
+
+    .version { color: #999; }
+    .relaunch { color: orange; }
+    .message { color: blue; }
+    .feedback { color: #CD4343; }
+    .share { color: #026e00;; }
+
+    .btn-feedback {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      z-index: 9;
+      opacity: 0;
+    }
+  }
+
+  // 微信快速登录
+  .wx_quick_login {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 80rpx;
+    background-color: #1aad19;
+    border-radius: 10rpx;
+    box-sizing: border-box;
+    padding: 0 30rpx;
+    margin-top: 50rpx;
+    .wx_img {
+      width: 40rpx;
+      height: 36rpx;
+    }
+    .wx_text {
+      font-family: PingFang SC;
+      font-size: 32rpx;
+      color: #ffffff;
+      line-height: 32rpx;
+      margin-left: 30rpx;
+    }
+    .wx_login_btn {
+      position: absolute;
+      left: 0;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      opacity: 0;
+      padding: 0;
+      margin: 0;
+    }
+  }
+}

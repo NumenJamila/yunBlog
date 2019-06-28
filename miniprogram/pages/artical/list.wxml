@@ -1,0 +1,37 @@
+<navigation-bar
+  title="{{navName}}"
+  show-home="true">
+  <view slot="action"></view>
+
+  <view class="page-list" bindtouchstart="touchStart" bindtouchend="touchEnd">
+
+    <block wx:for="{{list}}" wx:key="{{index}}">
+      <view class="list-item {{isRealScroll ? 'animate' : ''}}" >
+        <view data-item="{{item}}" bindtap="toDetail">
+          <view class="content">
+            {{item.title}}
+          </view>
+          <view class="summary"><wemark md="{{item.summary}}" type="wemark"></wemark></view>
+          <view class="foot-info">
+
+            <!-- <view class="field">{{item.date}}发布</view> -->
+          </view>
+        </view>
+      </view>
+
+      <!-- 广告组件 -->
+      <view class="ad-box" wx:if="{{index%11 === 0 && index > 0}}">
+        <ad unit-id="adunit-bc9f51b6adb9bb48"></ad>
+      </view>
+    </block>
+
+    <!-- loading -->
+    <!-- <view wx:if="{{loadingStatus || !noMoreData}}"><loading show /></view> -->
+    <view wx:if="{{noMoreData}}" class="no-data" >~~ 我是有底线的哦 ~~</view>
+  </view>
+</navigation-bar>
+
+
+<view class="page-float-tip" catchtap="toNew">
+  <image style='width: 100%;height:100%;' src='../../images/new.png'></image>
+</view>

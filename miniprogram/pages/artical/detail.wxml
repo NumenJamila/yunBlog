@@ -1,0 +1,8 @@
+<navigation-bar title="{{navTitle}}" prevent-back="{{false}}" prevent-home="{{false}}">
+ 
+
+        <!-- 文章内容 -->
+        <wemark md="{{content}}" link highlight tapable type="wemark"></wemark>
+
+       
+</navigation-bar>

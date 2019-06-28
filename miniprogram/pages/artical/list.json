@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "blog",
+  "enablePullDownRefresh": true,
+  "onReachBottomDistance": 200,
+  "usingComponents": {
+    "wemark": "../../components/wemark/wemark",
+    "gotop": "../../components/gotop/gotop"
+  }
+}
