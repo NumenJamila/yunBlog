@@ -7,7 +7,8 @@ Page({
     navTitle: '话题详情',
     detail: null,
     content: '',
-    detailId: null
+    detailId: null,
+    post: {}
   },
   onShareAppMessage() {
     return {
@@ -29,7 +30,7 @@ Page({
       success: res => {
         console.log(res)
         this.setData({
-          content: res.data[0].content//返回的是一个数组，取第一个
+          post: res.data[0]//返回的是一个数组，取第一个
         })
       }, fail: err => {
         console.log(err)

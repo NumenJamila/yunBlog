@@ -19,10 +19,11 @@ const util = {
     const month = this.fillZero(dt.getMonth() + 1);
     const day = this.fillZero(dt.getDate());
 
-    const h = this.fillZero(dt.getHours());
-    const m = this.fillZero(dt.getMinutes());
-    const s = this.fillZero(dt.getSeconds());
-    return `${year}-${month}-${day} ${h}:${m}:${s}`;
+    // const h = this.fillZero(dt.getHours());
+    // const m = this.fillZero(dt.getMinutes());
+    // const s = this.fillZero(dt.getSeconds());
+    // return `${year}-${month}-${day} ${h}:${m}:${s}`;
+    return `${year}-${month}-${day}`;
   },
 
   // 日期时间转换
@@ -57,19 +58,7 @@ const util = {
     return sb.join('') + '前';
   },
 
-  // 帖子版块
-  listTabs: {
-    'all': '全部',
-    'good': '精华',
-    'share': '分享',
-    'ask': '问答',
-    'job': '招聘'
-  },
-  // 帖子分类 tab转意
-  tabToWord: function (tab) {
-    return this.listTabs[tab] || '全部';
-  },
-
+ 
   // 获取自定义导航部分数据: 单位px
   getNavigationData() {
     const {

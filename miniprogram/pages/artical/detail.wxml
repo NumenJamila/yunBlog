@@ -1,8 +1,68 @@
 <navigation-bar title="{{navTitle}}" prevent-back="{{false}}" prevent-home="{{false}}">
- 
 
-        <!-- 文章内容 -->
-        <wemark md="{{content}}" link highlight tapable type="wemark"></wemark>
+  <!--文章头部-->
+  <view catchtap="hiddenMenubox">
+    <view class="feed-item" id="{{post.id}}">
+      <view class="zan-font-16">
+        <text>{{post.title}}</text>
+      </view>
+      <view class="tag-body">
+        <view class="tag-actions">
+          <view class="icon-author">
+            <view class="zan-icon zan-icon-contact zan-pull-left zan-font-12 "> </view>
+            <view class="zan-pull-left zan-font-12 ">
+              玄冰
+            </view>
+          </view>
+          <view class="icon-created">
+            <view class="zan-icon zan-icon-clock zan-pull-left zan-font-12 "></view>
+            <view class="zan-pull-left zan-font-12">
+              <text>{{post.time}}</text>
+            </view>
+          </view>
+          <view class="icon-review">
+            <view class="zan-icon zan-icon-browsing-history zan-pull-left zan-font-12 "></view>
+            <view class="zan-pull-left zan-font-12">
+              <text>{{post.view_count}}</text>
+            </view>
+          </view>
+          <view class="icon-comment">
+            <view class="zan-icon zan-icon-records zan-pull-left zan-font-12 "></view>
+            <view class="zan-pull-left zan-font-12">
+              <text>{{post.comment_count}}</text>
+            </view>
+          </view>
+          <view class="icon-like">
+            <view class="zan-icon zan-icon-like zan-pull-left zan-font-12 "></view>
+            <view class="zan-pull-left zan-font-12">
+              <text>{{post.like_count}}</text>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
 
-       
+    <!--文章主体-->
+    <view class="wxParse" style='padding:0 20rpx 200rpx 20rpx'>
+      <wemark md="{{content}}" link highlight tapable type="wemark"></wemark>
+    </view>
+
+    <!--评论区-->
+<view>
+
+  <view class="comment-fixed">
+    <form catchsubmit="formSubmit" report-submit="true">
+      <view class="comment-respond">
+        <view class="comment-box">
+          <input class="comment-input" bindconfirm="formSubmit" type='text' confirm-type="send" cursor-spacing="10" maxlength="100" name="inputComment" value="{{commentContent}}" placeholder="{{placeholder}}" focus="{{focus}}" bindblur="onReplyBlur" bindfocus="onRepleyFocus" 
+          />
+          <button class="comment-button touch-active" formType="submit">发送</button>
+        </view>
+      </view>
+    </form>
+  </view>
+</view>
+<!-- 评论区 -->
+</view>
+
 </navigation-bar>

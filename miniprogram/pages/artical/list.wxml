@@ -1,3 +1,4 @@
+<import src="../../templates/login.wxml" />
 <navigation-bar
   title="{{navName}}"
   show-home="true">
@@ -35,3 +36,5 @@
 <view class="page-float-tip" catchtap="toNew">
   <image style='width: 100%;height:100%;' src='../../images/new.png'></image>
 </view>
+ <!-- 弹出层：授权 -->
+<template is="login" data="{{showPopup: showPopup, canIUse: canIUse}}"></template>

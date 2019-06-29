@@ -1,3 +1,4 @@
+@import "dist/index.wxss";
 page {
   height: 100%;
   overflow-x: hidden;

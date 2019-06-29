@@ -1,6 +1,7 @@
 {
   "pages": [
     "pages/artical/list",
+    "pages/index/index",
     "pages/artical/detail",
     "pages/edit/index",
     "pages/personal/personal"

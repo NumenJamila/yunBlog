@@ -7,19 +7,24 @@ const app = getApp();
 
 Page({
   data: {
+    showPopup: false,
+    canIUse: wx.canIUse("button.open-type.getUserInfo"),
     navName: '文章列表',
     list: [], // 内容列表
     loadingStatus: true, // loading状态
-
+    hasUserInfo: false
   },
   onShareAppMessage() {
     return {
-      title: '【CNode社区热帖】',
+      title: '云博客随心悦',
       path: `/pages/artical/list`,
       imageUrl: 'http://static.xiaoqiang365.com/wechat/cnode/card_posts.jpg'
     }
   },
+
   onLoad(option) {
+    let that = this;
+    
     this.getLists();
     this.clickedAdCount = 0;
     const {
@@ -75,10 +80,36 @@ Page({
   // updateShareMessage(shareInfo) {
   //   this.onShareAppMessage = () => shareInfo;
   // },
+  bindGetUserInfo: function (e) {
+    console.log(e.detail.userInfo)
+    if (e.detail.userInfo) {
+      app.globalData.userInfo = e.detail.userInfo
+      this.setData({
+        showPopup: !this.data.showPopup,
+        userInfo: e.detail.userInfo,
+        hasUserInfo: true
+      });
+    } else {
+      wx.switchTab({
+        url: '../artical/list'
+      })
+    }
+  },
+
   // 新建博客
   toNew() {
-    wx.navigateTo({
-      url: `/pages/edit/index`
-    })
+    let that = this;
+    app.checkUserInfo(function (userInfo, isLogin) {
+      if (!isLogin) {
+        that.setData({
+          showPopup: true
+        })
+        return;
+      } else {
+        wx.navigateTo({
+          url: `/pages/edit/index`
+        })
+      }
+    });  
   }
 })

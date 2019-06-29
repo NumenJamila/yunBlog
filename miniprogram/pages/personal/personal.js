@@ -11,7 +11,7 @@ Page({
     collections: [], // 收藏列表
 
     hasAuthorization: false, // 用户是否授权允许获取用户信息
-    userInfo: {},
+    showPopup: false,
     hasUserInfo: false,
     canIUse: wx.canIUse("button.open-type.getUserInfo")
   },
@@ -26,30 +26,34 @@ Page({
      * 生命周期函数--监听页面加载
      */
   onLoad: function (options) {
-    if (app.globalData.userInfo) {
-      this.setData({
-        userInfo: app.globalData.userInfo,
-        hasUserInfo: true
-      })
-    } else if (this.data.canIUse) {
-      // 由于getUserInfo是网络请求，可能会在Page.onload之后才返回
-      // 为了防止这种情况发生，所以此处加入callback
-      app.userInfoReadyCallback = res => {
-        this.setData({
-          userInfo: res.userInfo,
-          hasUserInfo: true
+    let that = this;
+    app.checkUserInfo(function (userInfo, isLogin) {
+      if (!isLogin) {
+        that.setData({
+          showPopup: true
         })
+      } else {
+        that.setData({
+          userInfo: userInfo,
+          hasUserInfo: true
+        });
       }
-    }
+    });
   },
-
-  // 实现获取用户信息的方法
-  getUserInfo: function (e) {
-    // console.log(e);
-    this.setData({
-      userInfo: e.detail.userInfo,
-      hasUserInfo: true
-    })
+  bindGetUserInfo: function (e) {
+    console.log(e.detail.userInfo)
+    if (e.detail.userInfo) {
+      app.globalData.userInfo = e.detail.userInfo
+      this.setData({
+        showPopup: !this.data.showPopup,
+        userInfo: e.detail.userInfo,
+        hasUserInfo: true
+      });
+    } else {
+      wx.switchTab({
+        url: '../artical/list'
+      })
+    }
   },
 
   // 辅助操作

@@ -1,4 +1,6 @@
 //获取应用实例
+
+const util = require('../../lib/util.js');
 const app = getApp()
 
 Page({
@@ -12,8 +14,16 @@ Page({
     content: '',
     oldList: []
   },
-
-  /**
+  onLoad: function () {
+    // 调用函数时，传入new Date()参数，返回值是日期和时间
+    var time = util.formateDate(new Date());
+    console.log(time)
+    // 再通过setData更改Page()里面的data，动态更新页面的数据
+    this.setData({
+      time: time
+    });
+  },
+  /*
    * 上传文件
    */
   uploadFile: function() {
@@ -81,61 +91,6 @@ Page({
     })
   },
 
-  /**
-   * 发布文章
-   */
-  addBlog: function(e) {
-    const data = this.data
-    const formData = e.detail.value;
-
-    if (!formData.title || !formData.content || !data.coverImage) {
-      return wx.showToast({
-        title: '封面、标题或文章内容不能为空',
-        icon: 'none'
-      });
-    }
-
-    wx.showLoading({
-      title: '发布中',
-    });
-
-    wx.cloud.callFunction({
-      name: 'addblog',
-      data: {
-        cover: data.coverImage,
-        title: formData.title,
-        content: formData.content
-      }
-    }).then(res => {
-      console.log('调用成功', res)
-      const result = res.result;
-      const data = result.data || {};
-
-      if (result.code) {
-        wx.showToast({
-          title: result.msg,
-          icon: 'none'
-        });
-        return;
-      }
-
-      // 跳转到详情
-      app.globalData.blog.detailId = data.id;
-      wx.navigateTo({
-        url: '../detail/index'
-      });
-      wx.hideLoading();
-
-    }).catch(err => {
-      console.error('调用失败', err)
-      this.setData({
-        statusMsg: `调用失败：${err.errMsg}`,
-      });
-      wx.hideLoading();
-    });
-  },
-
-
   //监听input失去焦点
   titleInput: function (e) {
     console.log(e)
@@ -176,29 +131,13 @@ Page({
     wx.showLoading({
       title: '发布中',
     });
-    // wx.cloud.callFunction({
-    //   name: 'addblog',
-    //   data: {
-    //     title: this.data.title,
-    //     content: this.data.content
-    //   }
-    // }).then(res => {
-    //   console.log('调用成功', res)
-    //   const result = res.result;
-    //   const data = result.data || {};
 
-    //   if (result.code) {
-    //     wx.showToast({
-    //       title: result.msg,
-    //       icon: 'none'
-    //     });
-    //     return;
-    //   }
     const db = wx.cloud.database()//打开数据库连接
     db.collection("blog").add({
       data: {
         title: this.data.title,
-        content: this.data.content
+        content: this.data.content,
+        time: this.data.time
       }, success: res => {
         console.log(res)
         wx.showToast({
@@ -213,12 +152,6 @@ Page({
         })
       }
     })
-
-      // 跳转到详情
-      // app.globalData.blog.detailId = data.id;
-      // wx.navigateTo({
-      //   url: '../artical/detail?id=' + data.id
-      // });
       wx.hideLoading();
   }
 })
